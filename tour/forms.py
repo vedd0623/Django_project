@@ -7,8 +7,3 @@ class SignupForm(UserCreationForm):
         model = User
         fields = ['username','first_name','last_name','email',]
 
-class BlogForm(forms.ModelForm):
-    class Meta():
-        model = Blog
-        fields = ['topic','image','blog','post_date',]
-        exclude=['user']
