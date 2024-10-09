@@ -134,10 +134,7 @@ def booking(request,pr_id):
 def about(request):
     return render(request,'about.html')
 
-def blog(request):
-    data=Blog.objects.all()
-    d={'data':data}
-    return render(request,'blog.html',d)
+
 
 def search(request):
     if request.method == 'POST':
@@ -284,45 +281,13 @@ def edit_destination(request,pid):
         return redirect('view_destination')
     d={'data':data}
     return render(request,'edit_destination.html',d)
-def add_blog(request):
-    form = BlogForm(request.POST, request.FILES)
-    if request.method == "POST":
-        if form.is_valid():
-            form.save()
-            messages.info(request, 'Add Blog successfully')
-            return redirect('admin_viewblog')
-    d={'form':form}
-    return render(request,'add_blog.html',d)
-def update_blog(request,pid):
-    data=Blog.objects.get(id=pid)
-    form = BlogForm(instance=data)
-    if request.method == "POST":
-        form = BlogForm(request.POST,request.FILES,instance=data)
-        if form.is_valid():
-            form.save()
-            messages.info(request, 'Blog Update successfully')
-            return redirect('admin_viewblog')
-    d={'form':form}
-    return render(request,'update_blog.html',d)
 
-def admin_viewblog(request):
-    data=Blog.objects.all()
-    d={'data':data}
-    return render(request,'admin_viewblog.html',d)
-
-def view_blog_detail(request,pid):
-    data=Blog.objects.get(id=pid)
-    d={'data':data}
-    return render(request,'view_blog_detail.html',d)
+       
 def view_contact(request):
     data=Contact.objects.all()
     d={'data':data}
     return render(request,'view_contact.html',d)
-def delete_blog(request,pid):
-    blog = Blog.objects.get(id = pid)
-    blog.delete()
-    messages.info(request, 'Blog deleted successfully')
-    return redirect('admin_viewblog')
+
 
 def Change_Password(request):
     if request.method=="POST":
