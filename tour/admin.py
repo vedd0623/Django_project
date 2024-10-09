@@ -15,9 +15,6 @@ class BookingAdmin(admin.ModelAdmin):
 class Contact(admin.ModelAdmin):
     list_display = ['id','first_Name','last_Name','email','subject','message']
 
-@admin.register(Blog)
-class Blog(admin.ModelAdmin):
-    list_display = ['id','user','topic','image','blog']
 
 @admin.register(User_Profile)
 class Profile(admin.ModelAdmin):
